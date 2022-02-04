@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\OutletController;
+use App\Http\Controllers\PaketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'home.index');
+
+Route::get('member', [MemberController::class, 'index'])->name('member');
+Route::post('member', [MemberController::class, 'store']);
+Route::post('member/store', [MemberController::class, 'update'])->name('member.update');
+Route::post('member/destroy', [MemberController::class, 'destroy'])->name('member.destroy');
+
+Route::get('outlet', [OutletController::class, 'index'])->name('outlet');
+Route::post('outlet', [OutletController::class, 'store']);
+Route::post('outlet/store', [OutletController::class, 'update'])->name('outlet.update');
+Route::post('outlet/destroy', [OutletController::class, 'destroy'])->name('outlet.destroy');
+
+Route::get('paket', [PaketController::class, 'index'])->name('paket');
+Route::post('paket', [PaketController::class, 'store']);
+Route::post('paket/store', [PaketController::class, 'update'])->name('paket.update');
+Route::post('paket/destroy', [PaketController::class, 'destroy'])->name('paket.destroy');
