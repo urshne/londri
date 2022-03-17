@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Paket;
+use App\Exports\PaketExport;
 use App\Http\Requests\StorePaketRequest;
 use App\Http\Requests\UpdatePaketRequest;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PaketController extends Controller
 {
@@ -88,4 +90,11 @@ class PaketController extends Controller
         Paket::findOrFail($r->id)->delete($r->all());
         return back();
     }
+
+    public function export()
+    {
+        $date = date('Y-m-d');
+        return Excel::download(new PaketExport, 'paket.xlsx');
+    }
+    
 }

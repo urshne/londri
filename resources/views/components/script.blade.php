@@ -28,3 +28,5 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="/assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/assets/dist/js/adminlte.js"></script>
+<script src="{{ asset('assets') }}/plugins/datatables/jquery.dataTables.js"></script>
+@stack('script')

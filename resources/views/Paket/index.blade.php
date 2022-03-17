@@ -1,11 +1,14 @@
 <x-app>
-    <button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#createModal">Add New Member</button>
     <div class="table-responsive">
+        <button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#createModal">Add New Member</button>
+        <div class="d-flex align-items-center mb-3">
+            <a href="/paket/export" class="btn btn-sm btn-success">Export Data</a>
+        </div>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <td>Jenis Paket</td>
-                    <td>Nama_Paket</td>
+                    <td>Nama Paket</td>
                     <td>Harga</td>
                 </tr>
             </thead>

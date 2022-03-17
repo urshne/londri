@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MemberExport;
 use App\Models\Member;
+use App\Imports\MemberImport;
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
 use Illuminate\Http\Request;
+use Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MemberController extends Controller
 {
@@ -87,5 +91,37 @@ class MemberController extends Controller
     {
         Member::findOrFail($r->id)->delete($r->all());
         return back();
+    }
+
+    public function export()
+    {
+        $date = date('Y-m-d-');
+        return Excel::download(new MemberExport, $date.'member.xlsx');
+    }
+    
+    public function importExcel(Request $r)
+    {
+        // validasi
+		$this->validate($r, [
+			'file' => 'required|mimes:csv,xls,xlsx'
+		]);
+ 
+		// menangkap file excel
+		$file = $r->file('file');
+ 
+		// membuat nama file unik
+		$nama_file = rand().$file->getClientOriginalName();
+ 
+		// upload ke folder file_siswa di dalam folder public
+		$file->move('file_member',$nama_file);
+ 
+		// import data
+		Excel::import(new MemberImport, public_path('/file_member/'.$nama_file));
+ 
+		// notifikasi dengan session
+		Session::flash('sukses','Data Member Berhasil Diimport!');
+ 
+		// alihkan halaman kembali
+		return redirect()->back();
     }
 }

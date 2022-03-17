@@ -1,12 +1,16 @@
 <x-app>
-    <button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#createModal">Create Data Outlet</button>
     <div class="table-responsive">
+        <button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#createModal">Create Data Outlet</button>
+        <div class="d-flex align-items-center mb-3">
+        <a href="/outlet/export" class="btn btn-sm btn-success">Export Data</a>
+    </div>
         <table class="table class="table table-striped table-hover"">
             <thead>
                 <tr>
                     <td>Nama</td>
                     <td>Telp</td>
                     <td>Alamat</td>
+                    <td>Aksi</td>
                 </tr>
             </thead>
             <tbody>

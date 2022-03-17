@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\Paket;
+use App\Models\Member;
 use App\Http\Requests\StoreTransaksiRequest;
 use App\Http\Requests\UpdateTransaksiRequest;
 
@@ -15,7 +17,9 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        $data['member'] = Member::get();
+        
+        return view('transaksi.index')->with($data);
     }
 
     /**

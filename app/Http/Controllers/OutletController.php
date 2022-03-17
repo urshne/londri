@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Outlet;
+use App\Exports\OutletExport;
 use App\Http\Requests\StoreOutletRequest;
 use App\Http\Requests\UpdateOutletRequest;
-use Illuminate\Http\Request;    
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OutletController extends Controller
 {
@@ -88,4 +90,10 @@ class OutletController extends Controller
         Outlet::findOrFail($r->id)->delete($r->all());
         return back();
     }
+
+    public function export()
+    {
+        return Excel::download(new OutletExport, 'outlet.xlsx');
+    }
+
 }

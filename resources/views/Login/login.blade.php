@@ -22,7 +22,7 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Login Dulu Ayang!</p>
+      <p class="login-box-msg">Silahkan Masuk!</p>
 
       <form action="login" method="post">
         @csrf 

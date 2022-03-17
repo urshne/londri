@@ -1,13 +1,19 @@
 <x-app>
-    <button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#createModal">Create Data Member</button>
+    <div class="section-header">
+        <h1>Members Page</h1>
+    <div class="d-flex align-items-center mb-3">
+        <button type="button" class="btn btn-sm btn-primary mr-2" data-toggle="modal" data-target="#createModal">Create Data Member</button>
+        <button type="button" class="btn btn-sm btn-success mr-2" data-toggle="modal" data-target="#importExcel">Import Data</button>
+        <a href="/member/export" class="btn btn-sm btn-success">Export Data</a>
+    </div>
     <div class="table-responsive">
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <td>Nama</td>
+                    <td>Alamat</td>
                     <td>Jenis Kelamin</td>
                     <td>Telp</td>
-                    <td>Alamat</td>
                     <td>Aksi</td>
                 </tr>
             </thead>
@@ -15,9 +21,9 @@
                 @foreach($member as $item)
                 <tr>
                     <td>{{ $item->nama }}</td>
+                    <td>{{ $item->alamat }}</td>
                     <td>{{ $item->jenis_kelamin }}</td>
                     <td>{{ $item->tlp }}</td>
-                    <td>{{ $item->alamat }}</td>
                     <td>
                         <div class="d-flex">
                             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#updateModal{{ $item->id }}">Edit</button>
@@ -90,6 +96,6 @@
             </tbody>
         </table>
     </div>
-
+    
     @include('member._modal')
 </x-app>
